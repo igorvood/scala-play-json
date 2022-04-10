@@ -37,9 +37,3 @@ object D1 {
 }
 
 
-/*
-object ExampleCaseClass {
-implicit val exampleReads: Reads[ExampleCaseClass] = (
-  (JsPath \ "username").read[String].filter(ValidationError("User does not exist."))(findByName(_).isDefined) and
-    (JsPath \ "somethingElse").read[String]
-  )(ExampleCaseClass.apply _)*/
