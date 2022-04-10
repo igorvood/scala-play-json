@@ -2,10 +2,7 @@ package ru.vood.example.play.test2
 
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should
-import play.api.libs.json.{JsError, JsSuccess, Json}
-
-
-import java.util.Date
+import play.api.libs.json.{JsError, Json}
 
 class Test extends AnyFlatSpec with should.Matchers {
 
@@ -24,12 +21,11 @@ class Test extends AnyFlatSpec with should.Matchers {
   }
 
 
-
   "json DslJsonRandomMeta determenistic test" should "be called DataClass222" in {
 
     val margin =
       """{
-        |  "name" : "data1",
+        |  "name" : "1",
         |  "d2" : {
         |    "serName" : "batit",
         |    "d3" : {
@@ -44,10 +40,14 @@ class Test extends AnyFlatSpec with should.Matchers {
     val value2 = value1.validate[D1]
 
     value2 match {
-      case JsError(eee) => println(eee.mkString("\n"))
+      case JsError(eee) =>
+        println(eee.mkString("\n"))
+        val errors = eee.flatMap(q => q._2)
+        assert(errors.flatMap(w=>w.messages)
+          .contains("Name must contains '!'"))
     }
 
-//    val value3 = value1.as[D1]
+    //    val value3 = value1.as[D1]
   }
 
   /*"json DslJsonRandomMeta determenistic test" should "be called DataClass errr" in {
