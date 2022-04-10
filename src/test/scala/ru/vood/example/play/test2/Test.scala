@@ -45,6 +45,11 @@ class Test extends AnyFlatSpec with should.Matchers {
         val errors = eee.flatMap(q => q._2)
         assert(errors.flatMap(w=>w.messages)
           .contains("Name must contains '!'"))
+
+        assert(errors.flatMap(w=>w.messages)
+          .contains("error.expected.jsnumber"))
+
+
     }
 
     //    val value3 = value1.as[D1]

@@ -21,19 +21,12 @@ object D1 {
   private val path1: JsPath = JsPath(List(KeyPathNode("name")))
 
 
+  //  private implicit val value: Reads[Name] = (__ \ "name").read[Name].filter(JsonValidationError("Name must contains '!'"))(_.contains("!"))
   implicit val reads: Reads[D1] = (
     (__ \ "name").read[Name].filter(JsonValidationError("Name must contains '!'"))(_.contains("!")) and
       (__ \ "d2").read[D2]) (D1.apply _)
-
-
-  //  private implicit val value: Reads[Name] = (__ \ "name").read[Name].filter(JsonValidationError("Name must contains '!'"))(_.contains("!"))
-  //  private implicit val value: Reads[Name] = (JsPath(List(KeyPathNode("name")))).read[Name].filter(JsonValidationError("Name must contains '!'"))(_.contains("!"))
-
   //  implicit val reads1: Reads[D1] = Json.reads[D1]
-  /*implicit val reads: Reads[D1] = (
-    (__ \ "name").read[Name].filter(JsonValidationError("Name must contains '!'"))(_.contains("!")) and
-      (__ \ "d2").read[D2]) (D1.apply _)
-  */
+
 }
 
 
