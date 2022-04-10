@@ -20,13 +20,12 @@ object D1 {
 
   private val path1: JsPath = JsPath(List(KeyPathNode("name")))
 
-  //  implicit val reads: Reads[D1] = Json.reads[D1]
+//    implicit val reads1: Reads[D1] = Json.reads[D1]
 
 
   implicit val reads: Reads[D1] = (
     (__ \ "name").read[Name].filter(JsonValidationError("Name must contains '!'"))(_.contains("!")) and
-      (__ \ "d2").read[D2]).tupled
-    .map((D1.apply _).tupled)
+      (__ \ "d2").read[D2])(D1.apply _)
 
 }
 
