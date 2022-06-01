@@ -1,12 +1,9 @@
 package ru.vood.example.play
 
-import play.api.libs.json.{JsString, JsValue, Json, OWrites, Reads, Writes}
-
-import java.util.Date
 import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormat
+import play.api.libs.json._
 //import play.api.data.format.Formats.dateFormat
-import java.text.SimpleDateFormat
 
 case class InnerDataClass(
                            birthDate: DateTime
@@ -14,7 +11,7 @@ case class InnerDataClass(
 
 object InnerDataClass {
 
-//  val dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+  //  val dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
   val dateFormat = "yyyy-MM-dd"
 
 
@@ -25,10 +22,10 @@ object InnerDataClass {
   )
 
   implicit val jodaDateWrites: Writes[DateTime] = new Writes[DateTime] {
-  def writes(d: DateTime): JsValue = {
+    def writes(d: DateTime): JsValue = {
 
-    JsString(d.toString(dateFormat))
-  }
+      JsString(d.toString(dateFormat))
+    }
   }
 
 
