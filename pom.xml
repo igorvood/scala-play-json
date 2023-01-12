@@ -55,18 +55,9 @@
     </dependencies>
 
     <build>
+        <sourceDirectory>src/main/scala</sourceDirectory>
+        <testSourceDirectory>src/test/scala</testSourceDirectory>
         <plugins>
-            <plugin>
-                <groupId>com.amashchenko.maven.plugin</groupId>
-                <artifactId>gitflow-maven-plugin</artifactId>
-                <version>1.16.0</version>
-                <configuration>
-                    <gitFlowConfig>
-                        <productionBranch>main</productionBranch>
-                    </gitFlowConfig>
-                </configuration>
-            </plugin>
-
             <!-- Java Compiler -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -79,19 +70,28 @@
             </plugin>
 
             <!-- Scala Compiler -->
-            <plugin>
-                <groupId>net.alchim31.maven</groupId>
-                <artifactId>scala-maven-plugin</artifactId>
-                <version>3.2.2</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile</goal>
-                            <goal>testCompile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>net.alchim31.maven</groupId>-->
+<!--                <artifactId>scala-maven-plugin</artifactId>-->
+<!--                <version>3.4.0</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--&lt;!&ndash;                            <goal>compile</goal>&ndash;&gt;-->
+<!--                            <goal>testCompile</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <scalaVersion>${scala.version}</scalaVersion>-->
+<!--                            <args>-->
+<!--                                &lt;!&ndash; REMOVE THIS LINE: <arg>-make:transitive</arg> &ndash;&gt;-->
+<!--                                <arg>-dependencyfile</arg>-->
+<!--                                <arg>${project.build.directory}/.scala_dependencies</arg>-->
+<!--                            </args>-->
+<!--                        </configuration>-->
+
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
 
             <plugin>
                 <groupId>org.scalatest</groupId>
